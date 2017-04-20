@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="custom.css">
+</head>
+<body>
+  <div id="rotater">
+  <div class="test-block">Test 1</div>
+  <div class="test-block">Test 2</div>
+  <div class="test-block">Test 3</div>
+  <div class="test-block">Test 4</div>
+  <div class="test-block">Test 5</div>
+  </div>
+<script language="JavaScript" type="text/javascript" src="jquery-3.2.0.min.js"></script>
+<script type="text/javascript">
+/*
+var divs = $('#rotater .test-block');
+(function cycle() {
+
+  setTimeout(function() {
+    var index = Math.floor(Math.random() * divs.length);
+    divs.removeClass('active')
+    .eq(index).addClass('active');
+    cycle();
+  }, 1000);
+})();
+*/
+
+$(document).ready(function () {
+    var $todo = $(".test-block");
+    var interval = setInterval(function () {
+        var $el = $todo.eq(Math.floor(Math.random() * $todo.length)).addClass('active');
+        setTimeout(function () {
+            $el.removeClass('active');
+        }, 1500)
+        if ($todo.length == 1) {
+            clearInterval(interval);
+        }
+        $todo =$todo.not($el);
+    }, Math.floor((Math.random() * 0) + 1500));
+});
+
+</script>
+</body>
+</html>
